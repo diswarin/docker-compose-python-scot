@@ -1,0 +1,466 @@
+CLASSES
+    exceptions.Exception(exceptions.BaseException)
+        error
+
+    class error(exceptions.Exception)
+     |  Method resolution order:
+     |      error
+     |      exceptions.Exception
+     |      exceptions.BaseException
+     |      __builtin__.object
+     |
+     |  Data descriptors defined here:
+     |
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from exceptions.Exception:
+     |
+     |  __init__(...)
+     |      x.__init__(...) initializes x; see x.__class__.__doc__ for signature
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from exceptions.Exception:
+     |
+     |  __new__ = <built-in method __new__ of type object>
+     |      T.__new__(S, ...) -> a new object with type S, a subtype of T
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from exceptions.BaseException:
+     |
+     |  __delattr__(...)
+     |      x.__delattr__('name') <==> del x.name
+     |
+     |  __getattribute__(...)
+     |      x.__getattribute__('name') <==> x.name
+     |
+     |  __getitem__(...)
+     |      x.__getitem__(y) <==> x[y]
+     |
+     |  __getslice__(...)
+     |      x.__getslice__(i, j) <==> x[i:j]
+     |
+     |      Use of negative indices is not supported.
+     |
+     |  __reduce__(...)
+     |
+     |  __repr__(...)
+     |      x.__repr__() <==> repr(x)
+     |
+     |  __setattr__(...)
+     |      x.__setattr__('name', value) <==> x.name = value
+     |
+     |  __setstate__(...)
+     |
+     |  __str__(...)
+     |      x.__str__() <==> str(x)
+     |
+     |  __unicode__(...)
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from exceptions.BaseException:
+     |
+     |  __dict__
+     |
+     |  args
+     |
+     |  message
+
+FUNCTIONS
+    activateFilter(...)
+        activateFilter(conn, dataset) -- Returns None.
+
+        This function activates the filter that was previously created with the
+        createFilter function.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+
+    busGetDirs(...)
+        busGetDirs() -- Return the FAST/TOOLS directories in a dictionary.
+
+    busReceive(...)
+        busReceive(conn, [, 'SYNC_WAIT']) -- Returns a BUS/FAST message or None.
+
+        Checks if there us a BUS/FAST message waiting if not returns None.
+        conn is the DSS connection handle.
+        Optional arg 'SYNC_WAIT', If present the function will not return until a
+        message is received
+
+    busReply(...)
+        busReply(conn, message) -- Returns None.
+
+        Reply to a BUS/FAST message.
+        conn is the DSS connection handle.
+        message is the reply message.
+
+    busReplyError(...)
+        busReplyError(conn, message, error) -- Returns None.
+
+        Error reply to a BUS/FAST message.
+        conn is the DSS connection handle.
+        The original request message.
+        The error message.
+
+    busSend(...)
+        busSend(conn, message) -- Returns None.
+
+        Send a BUS/FAST message.
+        conn is the DSS connection handle.
+        message is the BUS/FAST message.
+
+    busSendReceive(...)
+        busSendReceive(conn, message) -- Returns the reply message.
+
+        Send a BUS/FAST message a wait for reply.
+        conn is the DSS connection handle.
+        message is the BUS/FAST message.
+
+    busSetMode(...)
+        busSetMode(conn, mode) -- Returns None.
+        conn is the DSS connection handle.
+        mode is the BUS/FAST message mode.
+
+        Used to tell the pyTOOLS BUS/FAST interface how to handle messages.
+        mode String constant, indicates how to interpreted BUS/FAST messages .
+        The mode constant can be one of the following:
+
+        Mode value:      Description:
+
+        ASCII            BUS/FAST message is interpreted as zero terminated
+                         ASCII string. This is the default mode.
+
+        BINARY           BUS/FAST message is interpreted as binary data.
+
+    busSetName(...)
+        busSetName(process_name) -- Returns None.
+
+        This function sets the name by which pyTOOLS will attach to BUS/FAST.
+
+    busSnap(...)
+        busSnap(mode) -- Returns snapshot entry or None.
+
+        Takes BUS/FAST statistics snapshot.
+        mode String constant, indicates the action to take.
+        The mode constant can be one of the following:
+
+        Mode value:    Description:
+
+        GENERAL        Takes a snapshot of general information.
+                       The general snapshot contains only one item.
+
+        QUEUE          Takes a snapshot of all queues,their
+                       characteristics and performance.
+
+        NODE           Takes a snapshot of all know connected
+                       nodes, their characteristics and performance.
+
+        LOCK           Takes a snapshot of all locks,their
+                       characteristics and performance.
+
+        FIRST          Obtain the first entry from the snapshot.
+
+        NEXT           Obtain the entry item from the snapshot.
+                       Obtains the first item when called
+                       directly after taking the snapshot.
+
+    close(...)
+        close(conn) -- Returns None.
+
+        Closes the connection to BUS/FAST and DSS.
+        conn is the DSS connection handle.
+
+    closeDataset(...)
+        closeDataset(conn, dataset) -- Returns None.
+
+        This function closes a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+
+    connect(...)
+        connect([, user],[, password]) -- Returns DSS connection handle.
+
+        Connects to DSS and returns a connection handle.
+        Optional arg user is the FAST/TOOLS user name.
+        Optional arg password is the user's password is.
+
+    createFilter(...)
+        createFilter(conn, dataset, filter_expression) -- Returns None.
+
+        This function creates a the filter for a data set
+        createFilter function.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        filter_expression is the DSS filter expression.
+
+    datasetEventNotify(...)
+        datasetEventNotify(conn, dataset, mode) -- Returns None.
+
+        Stop event notification for a specific record in a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        prime_index is the primary index of the dataset record.
+        mode indicating on which dataset events you want notification.
+        Can be 'u' for update or 'd' for delete, 'i' for insert or a combination of those.
+
+    datasetEventStop(...)
+        datasetEventstop(conn, dataset) -- Returns None.
+
+        Stop event notification for a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+
+    dateDSS(...)
+        dateDSS(conn, ascii_time) -- Returns DSS date/time format.
+
+        Convert FAST/TOOLS ASCII date/time format to DSS representation.
+        conn is the DSS connection handle.
+        ascii_time is the FAST/TOOLS ASCII time value.  dd-mm[m]-[yy]yy  hh:mm:[ss.[parts]]
+
+    dateRelDSS(...)
+        dateRelDSS(conn, ascii_time) -- Returns DSS date/time format.
+
+        Convert relative FAST/TOOLS ASCII date/time format to DSS representation.
+        conn is the DSS connection handle.
+        ascii_time is the FAST/TOOLS ASCII time value.
+
+    dateString(...)
+        dateString(conn, dss_time, format) -- Returns a date/time as string .
+
+        Convert DSS date/time format to a string representation.
+        conn is the DSS connection handle.
+        dss_time is the DSS time value.
+        format is a string representing the date/time layout.
+
+    deactivateFilter(...)
+        deactivateFilter(conn, dataset) -- Returns None.
+
+        This function deactivates the filter on a dataset
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+
+    deleteFilter(...)
+        deleteFilter(conn, dataset) -- Returns None.
+
+        This function removes a filter from a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+
+    deleteRecord(...)
+        deleteRecord(conn, dataset, index_value) -- Returns None.
+
+        This routine deletes a record from a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        index_value is the value of the index field you want to remove.
+
+    eventRead(...)
+        eventRead(conn) -- Returns a list of event records.
+
+        This function reads events form the DSS event queue.
+        conn is the DSS connection handle.
+
+    getAvailableDatasets(...)
+        getAvailableDatasets(conn) -- Returns a list of dataset names.
+
+        This function returns a list with the names of all datasets in DSS .
+        conn is the DSS connection handle.
+
+    getDatasetProperties(...)
+        getDatasetProperties(conn, dataset) -- Returns a dictionary.
+
+        Returns a dictionary of properties for a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset name.
+
+    getErrorStack(...)
+        getErrorStack(conn) -- Returns a list off UMH messages.
+
+        Gets all the messages currently on the FAST/TOOLS UMH stack.
+        conn is the DSS connection handle.
+
+    getFieldNames(...)
+        getFieldNames(conn, name) -- Returns a list of the field names.
+
+        This function returns a list of the fields in a data set.
+        conn is the DSS connection handle.
+        name is the name of the dataset.
+
+    getFieldProperties(...)
+        getFieldProperties(conn, dataset, field_name) -- Returns a dictionary.
+
+        Returns a dictionary of properties for a specific the field in a data set.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        Field_name is the name of a field in the dataset.
+
+    getHisGroupItems(...)
+        getHisGroupItems(conn, group [,node]) -- Returns a list of item names.
+
+        This routine returns a list of all items in a given item history group.
+        conn   - DSS connection handle.
+        group  - Name of the item history group.
+        node   - (optional) Node is the FAST/TOOLS node of the history group.
+
+    getIndex(...)
+        getIndex(conn, dataset) -- Returns a list of indexes.
+
+        Returns a list of all available datasets for a dataset.
+        conn is the DSS connection handle.
+        dataset is the name of the dataset.
+
+    getItemHistory(...)
+        getItemHistory(conn, item, group, start, end, max_sample  [, node]) -- Returns an interval of item history samples.
+
+        This routine returns an interval of item history samples.
+        conn is the DSS connection handle.
+        item           - Name of the item for which to retrieve history.
+        group          - Name of the item history group.
+        interval_start - Start of the history interval in DSS format.
+        interval_end   - End of the history interval in DSS format.
+        max_sample     - Max number of items to retrieve.
+        node           - (optional) Node is the FAST/TOOLS node of the history group.
+
+    insertRecord(...)
+        insertRecord(conn, dataset record) -- Returns None.
+
+        This routine inserts a new record in a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        record is the record to insert.
+
+    insertRecords(...)
+        insertRecords(conn, dataset, records) -- Returns None.
+
+        This routine inserts a list of new record in a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        records is a list of records to insert.
+
+    lockRecords(...)
+        lockRecords(conn, dataset, records) -- Returns None.
+
+        Locks one or more dataset records.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        records is a list of records you want locked.
+
+    logMessage(...)
+        logMessage(conn, string) -- Sends a string to the UMH logger.
+
+        Sends a string to the UMH logger.
+        conn is the DSS connection handle.
+        string is the string to be logged.
+
+    logon(...)
+        logon(conn,[, user], [, password]) -- Returns None.
+
+        Logon to DSS.
+        conn is the DSS connection handle.
+        Optional arg user is the FAST/TOOLS user name.
+        Optional arg password is the user's password is.
+
+    logout(...)
+        logout(conn) -- Returns None.
+
+        Log out of DSS. Authorisation level is restored to that from before logging in.
+        conn is the DSS connection handle.
+
+    openDataset(...)
+        openDataset(conn, dataset, fields, mode) -- Returns a dataset handle.
+
+        This function opens a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset name.
+        fields is a list dataset field names.
+        mode can be 'r' for read, 'u' for update, 'd' for delete, 'i' for insert
+        or a combination of these.
+
+    readEqual(...)
+        readEqual(conn, dataset, index_value) -- Returns a dataset record.
+
+        This routine does a read equal and returns a dataset record .
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        index_value is the value of the index field of the record to read.
+
+    readNext(...)
+        readNext(conn, dataset) -- Returns the 'next' record.
+
+        This routine returns the 'next' record in the data set.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+
+    readRecords(...)
+        readRecords(conn, dataset) -- Returns all records in a dataset.
+
+        This function returns a list of all records in a data set.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+
+    readSetup(...)
+        readSetup(conn, setup_file) -- Returns a list of setup file parameters.
+
+        Read FAST/TOOLS setup file.
+        conn is the DSS connection handle.
+        setup_file is the setup file name.
+
+    recordEventNotify(...)
+        recordEventNotify(conn, dataset, prime_index, mode) -- Returns None.
+
+        Start event notification for a specific record in a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        prime_index is the primary index of the dataset record.
+        mode indicating in which dataset records you are interested.
+        Can be 'u' for update or 'd' for delete or both.
+
+    recordEventStop(...)
+        recordEventStop(conn, dataset, prime_index) -- Returns None.
+
+        Stop event notification for a specific record in a dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        prime_index is the primary index of the dataset record.
+
+    rewindDataset(...)
+        rewindDataset(conn, dataset) -- Returns None.
+
+        Places the data set cursor on the first record in the dataset.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+
+    setIndex(...)
+        setIndex(conn, dataset, index_name) -- Returns None.
+
+        Update dataset records.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        index_name is the name of the index.
+
+    unlockRecords(...)
+        unlockRecords(conn, dataset, records) -- Returns None.
+
+        This function unlocks one or more dataset records.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        records is a list of records you want unlocked.
+
+    updateRecord(...)
+        updateRecord(conn, dataset, record) -- Returns None.
+
+        Update dataset records.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        record is the record to update.
+
+    updateRecords(...)
+        updateRecord(conn, dataset, records) -- Returns None.
+
+        Updates a list of dataset records.
+        conn is the DSS connection handle.
+        dataset is the dataset handle.
+        records is a list of records to update.
+
+    version(...)
+        version() -- Returns module version and build date.
