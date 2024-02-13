@@ -2,4 +2,4 @@ version: '2.4'
 services:
      pythonapp:
           build: ./
-          command: python2.7 ./app.py
+          command: python2.7 ./logs_csv.py
