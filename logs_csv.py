@@ -102,5 +102,6 @@ while(True):
     except:
         error_python = "{} : problem with script or manual !!!"
         print(error_python.format(logs_now))
+        logging.error(': problem with script or manual !!!')
         # print('problem with script or manual !!!')
 
