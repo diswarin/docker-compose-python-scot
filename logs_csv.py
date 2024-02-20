@@ -62,7 +62,7 @@ def read_tag():
     record_T010_TI12_GR     	= dss.readEqual(conn, data_set, 'GREASE.FAM0101.T010_TI12_GR')
     print (record_T010_TI12_GR)
     write_logs(record_T010_TI12_GR)
-    logging_tags()
+    # logging_tags()
 
 def write_logs(logs_data):
     this_moment = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
@@ -84,8 +84,11 @@ def countdown(time_sec):
 
 while(True):
     try:
+        logging.basicConfig(filename='myapp.log', level=logging.INFO)
+        logging.info('Started')
         read_tag()  
         countdown(60)
+        logging.info('Finished')
     except:
         error_python = "{} : problem with script or manual !!!"
         print(error_python.format(logs_now))
