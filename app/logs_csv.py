@@ -34,6 +34,7 @@ conn = dss.connect()
 logs_now_read_tag = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
 logs_data = ['Conncet DSS Pass !!!',logs_now_read_tag]
 print (logs_data)
+logging.info(logs_data)
 
 def read_tag():
     #fields = dss.getFieldNames(conn , 'ITEM_VAL')
@@ -86,19 +87,21 @@ def countdown(time_sec):
         # print("GeeksforGeeks", end= ' ')
         time.sleep(1)
         time_sec -= 1
-    print("START PROCESS NOW !!")
-    logging.info('START PROCESS NOW !!')
+    
 
 
 while(True):
     try:
         logging.basicConfig(format='%(asctime)s %(message)s',filename='myapp.log', level=logging.INFO)
-        logging.info('Started')
+        print("START PROCESS NOW !!")
+        logging.info('START PROCESS NOW !!')
         read_tag()  
         countdown(60)
-        logging.info('Finished')
+        print("END PROCESS !!")
+        logging.info('END PROCESS !!')
     except:
         error_python = "{} : problem with script or manual !!!"
         print(error_python.format(logs_now))
+        logging.error(': problem with script or manual !!!')
         # print('problem with script or manual !!!')
 
